@@ -16,13 +16,18 @@ function App() {
 
   async function handleSearchClick(){
     
-    const lichess = new Equine('lip_rtcSENVx5xWDBmY225dP')
-    const accountInfo = await lichess.user.info({username:query})
+    try {
+      const lichess = new Equine('lip_rtcSENVx5xWDBmY225dP')
+      const accountInfo = await lichess.user.info({username:query})
 
-    setUserId(accountInfo.id)
-    setRating(accountInfo.count.rated)
-    setAll(accountInfo.count.all)
-    setWinRate(accountInfo.count.win/accountInfo.count.all*100)
+      setUserId(accountInfo.id)
+      setRating(accountInfo.count.rated)
+      setAll(accountInfo.count.all)
+      setWinRate(accountInfo.count.win/accountInfo.count.all*100)  
+    } catch (error) {
+      alert("Please enter a valid username")
+    }
+    
 
   }
 
@@ -45,26 +50,31 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <div>
+        <div className='wrapper'>
+
+          <div className="inputDiv">
+            
+            <input className='input'
+              value={query}
+              onChange={(e) => setQuery(e.currentTarget.value)}
+              type="text"
+              placeholder="Enter Username"
+            />
+            <button className='submit' onClick={handleSearchClick}> Find</button>  
+            
+          </div>        
           
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.currentTarget.value)}
-            type="text"
-            placeholder="Enter Username"
-          />
-          <button onClick={handleSearchClick}> SEARCH</button>  
-          
-        </div>        
-        
-        <div>
-          <p>{userId}</p>
-          <p>{rating}</p>
-          <p>{all}</p>
-          <p>{winRate}</p>
-          
-          
+          <div className='userInfo'>
+            <p>{userId}</p>
+            <p> Rating: {rating}</p>
+            <p> Matches Played: {all}</p>
+            <p> Win Rate: {winRate.toFixed(2)}%</p>
+            
+            
+          </div>
+
         </div>
+
 
       </div>
 

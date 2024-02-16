@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: linear-gradient(90deg, rgba(0,36,3,1) 0%, rgba(121,9,69,1) 0%, rgba(95,54,110,1) 21%, rgba(54,122,172,1) 47%, rgba(0,212,255,1) 74%);
 }
 
 .App-logo {
@@ -14,7 +15,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,5 +38,42 @@
 }
 
 .userInfo{
+  padding-top: 10px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.userInfo p{
+  text-align: left;
+}
+
+.inputDiv{
+  display: flex;
+  gap: 8px;
+}
+
+.input{
+  border: 4px;
+  font-size: 16px;
+  padding: 4px 4px;
+  border-radius: 4px;
+}
+
+.submit{
+  background-color: white;
+  border: 0px black;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.wrapper{
+  background-color: rgba(0, 0, 0, 0.2);  
+  padding: 40px 40px 40px 40px;
+  display: flex;
+  gap:20px;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
 }
